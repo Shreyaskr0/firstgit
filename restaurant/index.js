@@ -14,7 +14,7 @@ orderForm.addEventListener("submit", function(event) {
             table: table,
         };
 
-        axios.post('https://crudcrud.com/api/6fa73c706c3b4b5f81c3715ecd09bc42/orders', orderData)
+        axios.post('https://crudcrud.com/api/67b6af2df18d4953a657726997e719fe/orders', orderData)
             .then(function(response) {
                 displayOrder(response.data);
             })
@@ -42,7 +42,7 @@ function displayOrder(order) {
 }
 
 function deleteOrder(id, button) {
-    axios.delete(`https://crudcrud.com/api/6fa73c706c3b4b5f81c3715ecd09bc42/orders/${id}`)
+    axios.delete(`https://crudcrud.com/api/67b6af2df18d4953a657726997e719fe/orders/${id}`)
         .then(function() {
             const listItem = button.closest('li');
             listItem.remove();
@@ -54,7 +54,7 @@ function deleteOrder(id, button) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    axios.get('https://crudcrud.com/api/6fa73c706c3b4b5f81c3715ecd09bc42/orders')
+    axios.get('https://crudcrud.com/api/67b6af2df18d4953a657726997e719fe/orders')
         .then(function(response) {
             response.data.forEach(function(order) {
                 displayOrder(order);
