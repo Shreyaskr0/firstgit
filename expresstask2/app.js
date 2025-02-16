@@ -11,7 +11,7 @@ app.use('/add-product', (req, res, next) => {
              '<input type="text" name="title" placeholder="Product Name">' +
              '<br><br>' +
              '<input type="text" name="size" placeholder="Product Size">' +
-             '<br><br>' +
+             '<br><br>'+
              '<button type="submit">Add Product</button>' +
              '</form></body></html>');
 });
