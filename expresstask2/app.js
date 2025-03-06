@@ -16,10 +16,10 @@ app.use('/add-product', (req, res, next) => {
              '</form></body></html>');
 });
 
-app.post('/product',(req, res, next) => {
-    console.log(req.body);
+app.post('/auth', (req, res) => {
+    console.log("User logged in:", req.body.username);
     res.redirect('/');
-    });
+});
 
 app.use('/',(req, res, next) => {
 res. send('<h1>Hello from Express!</h1>');
