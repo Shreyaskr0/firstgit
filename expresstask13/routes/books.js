@@ -7,6 +7,7 @@ router.get("/",(req,res)=>{
 });
 
 router.post("/",(req,res)=>{
+    console.log("Received book data:", req.body);
     res.send('Book has been added!');  
 });
 
