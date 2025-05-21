@@ -23,11 +23,11 @@ const postLogin = async (req, res) => {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.status(400).send(`<script>alert("User does not exist"); window.location.href="/signin";</script>`);
+      return res.status(404).send(`<script>alert("User does not exist"); window.location.href="/signin";</script>`);
     }
 
     if (user.password !== password) {
-      return res.status(400).send(`<script>alert("Incorrect password"); window.location.href="/signin";</script>`);
+      return res.status(401).send(`<script>alert("Incorrect password"); window.location.href="/signin";</script>`);
     }
 
     res.send(`<script>alert("User logged in successfully"); window.location.href="/signin";</script>`);
