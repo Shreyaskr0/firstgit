@@ -1,20 +1,29 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 const sequelize = require('./utils/database');
+const User = require('./models/user');
+const Expense = require('./models/expense');
+
 const authRoutes = require('./routes/authRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 
 const app = express();
 
-// Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
 app.use(authRoutes);
+app.use('/expense', expenseRoutes);
 
-// Connect to DB and start server
-sequelize.sync()
-  .then(result => {
-    app.listen(3000, () => console.log('Server started on http://localhost:3000'));
+sequelize
+  .sync()
+  .then(() => {
+    app.listen(3000, () => {
+      console.log('Server started on http://localhost:3000');
+    });
   })
-  .catch(err => console.log(err));
+  .catch((err) => {
+    console.error('Database sync error:', err);
+  });

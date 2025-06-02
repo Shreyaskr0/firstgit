@@ -51,7 +51,8 @@ const postLogin = async (req, res) => {
         return res.status(401).send(`<script>alert("Incorrect password"); window.location.href="/signin";</script>`);
       }
 
-      res.send(`<script>alert("User logged in successfully"); window.location.href="/signin";</script>`);
+      // Redirect to /expense on successful login
+      res.redirect('/expense');
     });
   } catch (err) {
     console.error('Login error:', err);
